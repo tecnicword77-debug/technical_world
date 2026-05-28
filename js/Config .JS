@@ -1,5 +1,5 @@
 // =============================================================================
-// config.js — Configuración global de Technic Word
+// config.js — Configuración global de Technic World
 // =============================================================================
 // Este archivo es el "panel de control" de la página.
 // Acá vas a encontrar TODOS los valores que podés necesitar cambiar:

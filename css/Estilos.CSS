@@ -1,5 +1,5 @@
 /* =============================================================================
-   estilos.css — Todos los estilos de Technic Word
+   estilos.css — Todos los estilos de Technic World
    =============================================================================
    Estructura de este archivo:
      1. Variables globales (colores, fuentes)
@@ -30,7 +30,7 @@
 
    :root {
 
-    /* Colores neón (la identidad visual de Technic Word) */
+    /* Colores neón (la identidad visual de Technic World) */
     --neon-blue:   #00d4ff;
     --neon-purple: #9d00ff;
     --neon-pink:   #ff00c8;
@@ -172,7 +172,7 @@
     letter-spacing: -1px;
   }
   
-  /* Nombre "TECHNIC WORD" con gradiente */
+  /* Nombre "TECHNIC WORLD" con gradiente */
   .brand-name {
     font-family: var(--font-display);
     font-size: 1rem;
@@ -320,7 +320,7 @@
     color: var(--text-main);
   }
   
-  /* "TECHNIC WORD" — texto con degradado */
+  /* "TECHNIC WORLD" — texto con degradado */
   .hero-title .line2 {
     background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
     -webkit-background-clip: text;

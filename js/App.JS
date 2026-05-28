@@ -1,5 +1,5 @@
 // =============================================================================
-// app.js — Lógica principal de Technic Word
+// app.js — Lógica principal de Technic World
 // =============================================================================
 // Este archivo maneja todo lo que "hace" la página:
 //   · Cargar los productos desde Google Sheets
@@ -372,7 +372,7 @@ function updateCartUI() {
     .map(i => `• ${i.nombre} x${i.qty} (${i.precioDisplay})`)
     .join('%0A');
 
-  const mensajeWA = `Hola Technic Word! Me interesan estos productos:%0A%0A${listaMsg}%0A%0ATotal: $${total.toLocaleString('es-AR')}%0A%0APueden confirmar disponibilidad? 🙌`;
+  const mensajeWA = `Hola Technic World! Me interesan estos productos:%0A%0A${listaMsg}%0A%0ATotal: $${total.toLocaleString('es-AR')}%0A%0APueden confirmar disponibilidad? 🙌`;
 
   document.getElementById('cartWaBtn').href =
     `https://wa.me/${CONFIG.WA_NUMBER}?text=${mensajeWA}`;
