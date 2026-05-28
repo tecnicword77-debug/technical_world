@@ -118,7 +118,7 @@
   }
   
   .section-title {
-    font-style: var(--font-display);
+    font-family: var(--font-display);
     font-size: clamp(1.5rem, 3vw, 2.2rem); /* clamp: mínimo, ideal, máximo */
     font-weight: 700;
     color: var(--text-main);
@@ -1528,3 +1528,544 @@
     }
   
   }
+
+/* =============================================================================
+   16. MODAL DE PRODUCTO
+   ============================================================================= */
+
+/* Overlay del modal */
+.product-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 3000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  backdrop-filter: blur(8px);
+}
+
+.product-modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Contenedor del modal */
+.product-modal {
+  background: var(--dark-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  animation: modalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  scrollbar-width: none;
+}
+
+.product-modal::-webkit-scrollbar { display: none; }
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Botón cerrar */
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid var(--border-glow);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s;
+  font-size: 0.85rem;
+}
+
+.modal-close:hover {
+  color: var(--neon-blue);
+  border-color: var(--neon-blue);
+}
+
+/* Columna izquierda: galería de imágenes */
+.modal-gallery {
+  background: linear-gradient(135deg, #0a0a20, #151530);
+  border-radius: 24px 0 0 24px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 400px;
+}
+
+/* Imagen principal */
+.modal-img-main {
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--dark-card2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  position: relative;
+}
+
+.modal-img-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-height: 300px;
+}
+
+.modal-img-placeholder-big {
+  font-size: 5rem;
+  opacity: 0.2;
+}
+
+/* Flechas de navegación */
+.modal-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  border: 1px solid var(--border-glow);
+  color: var(--text-muted);
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 5;
+  font-size: 0.8rem;
+}
+
+.modal-arrow:hover {
+  color: var(--neon-blue);
+  border-color: var(--neon-blue);
+}
+
+.modal-arrow-left  { left: 10px; }
+.modal-arrow-right { right: 10px; }
+
+/* Miniaturas */
+.modal-thumbnails {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.modal-thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--border-glow);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--dark-card2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.modal-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-thumb.active {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+}
+
+.modal-thumb:hover {
+  border-color: rgba(0, 212, 255, 0.6);
+}
+
+/* Columna derecha: info del producto */
+.modal-info {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
+  align-self: flex-start;
+}
+
+.modal-cat {
+  font-size: 0.65rem;
+  color: var(--neon-blue);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: var(--font-display);
+}
+
+.modal-name {
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.3;
+}
+
+.modal-desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  flex: 1;
+}
+
+.modal-price {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modal-add-btn {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 14px;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.25);
+}
+
+.modal-add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.45);
+}
+
+/* Cursor pointer en la tarjeta */
+.product-card { cursor: pointer; }
+
+/* Mobile: modal en columna única */
+@media (max-width: 640px) {
+  .product-modal {
+    grid-template-columns: 1fr;
+    max-height: 95vh;
+  }
+  .modal-gallery {
+    border-radius: 24px 24px 0 0;
+    min-height: 260px;
+  }
+  .modal-img-main { min-height: 200px; }
+}
+
+
+/* =============================================================================
+   17. IMÁGENES RESPONSIVE EN TARJETAS
+   =============================================================================
+   En vez de altura fija, usamos aspect-ratio para que la imagen
+   se adapte sola al ancho de la tarjeta en cualquier pantalla.
+   ============================================================================= */
+
+.product-img-wrap {
+  height: auto;
+  aspect-ratio: 4 / 3;   /* Relación ancho:alto — cambiá a 1/1 para cuadrado */
+}
+
+/* En celulares chicos las tarjetas son más angostas, 3/2 queda mejor */
+@media (max-width: 480px) {
+  .product-img-wrap {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+
+/* =============================================================================
+   18. CARRITO FLOTANTE LATERAL
+   =============================================================================
+   Botón fijo en el lado derecho, centrado verticalmente.
+   Reemplaza el carrito del navbar visualmente.
+   ============================================================================= */
+
+/* Ocultamos el botón de carrito del navbar para no duplicarlo */
+.cart-btn {
+  display: none !important;
+}
+
+/* Carrito flotante lateral */
+.cart-fab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  background: linear-gradient(180deg, var(--neon-blue), var(--neon-purple));
+  color: white;
+  border: none;
+  border-radius: 14px 0 0 14px;   /* Esquinas redondeadas solo a la izquierda */
+  padding: 16px 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: -4px 0 24px rgba(0, 212, 255, 0.25);
+  transition: all 0.3s;
+  min-width: 48px;
+}
+
+.cart-fab:hover {
+  padding-right: 14px;
+  box-shadow: -6px 0 32px rgba(0, 212, 255, 0.45);
+}
+
+.cart-fab i {
+  font-size: 1.2rem;
+}
+
+.cart-fab-label {
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  writing-mode: vertical-lr;   /* Texto vertical */
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  opacity: 0.85;
+}
+
+.cart-fab-count {
+  background: var(--neon-pink);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(255, 0, 200, 0.7);
+  font-family: var(--font-body);
+}
+
+/* En mobile: un poco más compacto */
+@media (max-width: 768px) {
+  .cart-fab {
+    padding: 14px 8px;
+    border-radius: 12px 0 0 12px;
+  }
+  .cart-fab-label {
+    display: none;   /* Ocultamos el texto en mobile, solo ícono + número */
+  }
+}
+
+
+/* =============================================================================
+   19. OFERTA — precio tachado + badge llamativo
+   ============================================================================= */
+
+/* Badge de oferta sobre la imagen */
+.badge-oferta {
+  background: linear-gradient(135deg, #ff4500, #ff0080) !important;
+  box-shadow: 0 0 14px rgba(255, 69, 0, 0.6);
+  animation: pulseBadge 1.8s ease-in-out infinite;
+  font-size: 0.7rem !important;
+}
+
+@keyframes pulseBadge {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 69, 0, 0.5); }
+  50%       { box-shadow: 0 0 22px rgba(255, 69, 0, 0.9); }
+}
+
+/* Bloque de precios (tachado + oferta) */
+.price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: flex-start;
+}
+
+/* Precio original tachado */
+.price-original {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 69, 0, 0.7);
+  font-family: var(--font-display);
+}
+
+/* Precio de oferta en la tarjeta */
+.price-oferta {
+  background: linear-gradient(90deg, #ff4500, #ff0080) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-size: 1.1rem !important;
+}
+
+/* Versión grande para el modal */
+.price-original-lg {
+  font-size: 1rem;
+}
+
+.price-oferta-lg {
+  font-size: 2rem !important;
+  background: linear-gradient(90deg, #ff4500, #ff0080) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Badge de oferta en el modal */
+.badge-oferta-modal {
+  background: linear-gradient(135deg, #ff4500, #ff0080) !important;
+  font-size: 0.75rem;
+  padding: 5px 14px;
+  box-shadow: 0 0 14px rgba(255, 69, 0, 0.4);
+}
+
+
+/* =============================================================================
+   20. CARRITO FLOTANTE — CORREGIDO PARA MOBILE
+   ============================================================================= */
+
+/* Reemplazar las reglas anteriores del cart-fab */
+.cart-fab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 998;
+  background: linear-gradient(180deg, var(--neon-blue), var(--neon-purple));
+  color: white;
+  border: none;
+  border-radius: 14px 0 0 14px;
+  padding: 18px 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: -4px 0 24px rgba(0, 212, 255, 0.3);
+  transition: padding 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cart-fab:hover {
+  padding-right: 18px;
+  box-shadow: -6px 0 36px rgba(0, 212, 255, 0.5);
+}
+
+.cart-fab i {
+  font-size: 1.25rem;
+  pointer-events: none;
+}
+
+.cart-fab-label {
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  letter-spacing: 2px;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.cart-fab-count {
+  background: var(--neon-pink);
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(255, 0, 200, 0.7);
+  font-family: var(--font-body);
+  pointer-events: none;
+}
+
+/* Panel del carrito — mejorado para mobile */
+.cart-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 360px;
+  max-width: 100vw;        /* En mobile ocupa toda la pantalla */
+  background: var(--dark-card);
+  border-left: 1px solid var(--border-glow);
+  z-index: 2001;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-panel.open {
+  transform: translateX(0);
+}
+
+/* Mobile específico */
+@media (max-width: 768px) {
+  .cart-fab {
+    padding: 16px 10px;
+    border-radius: 12px 0 0 12px;
+  }
+  .cart-fab-label { display: none; }
+  .cart-fab i     { font-size: 1.1rem; }
+
+  /* Carrito ocupa toda la pantalla en mobile */
+  .cart-panel {
+    width: 100vw;
+    border-left: none;
+    border-top: 1px solid var(--border-glow);
+  }
+
+  /* Botones flotantes de WA/IG no se pisen con el cart-fab */
+  .floating-btns {
+    bottom: 28px;
+    right: 72px;
+  }
+}
