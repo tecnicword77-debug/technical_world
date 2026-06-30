@@ -31,7 +31,6 @@ function saveCart() { localStorage.setItem('tw_cart', JSON.stringify(cart)); }
 function updateCartUI() {
   const total = cart.reduce((s, i) => s + i.precio * i.qty, 0);
   const count = cart.reduce((s, i) => s + i.qty, 0);
-  document.getElementById('cartCount').textContent    = count;
   document.getElementById('cartCountFab').textContent = count;
   const itemsEl  = document.getElementById('cartItems');
   const footerEl = document.getElementById('cartFooter');

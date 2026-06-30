@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Technic World</title>
+    <title>Technical World</title>
     <link rel="icon" type="image/jpeg" href="images/logo.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,13 +23,19 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="stylesheet" href="css/estilos.css" />
+
+    <!-- Navegación por secciones: solo se ve una "página" a la vez -->
+    <style>
+      .page-view { display: none; }
+      .page-view.active { display: block; }
+    </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg" id="inicio">
+    <nav class="navbar navbar-expand-lg" id="navbar-principal">
       <div class="container">
-        <a class="navbar-brand" href="#inicio">
+        <a class="navbar-brand" href="#inicio" onclick="irASeccion(event, 'inicio')">
           <div class="brand-logo">TW</div>
-          <span class="brand-name">TECHNIC WORLD</span>
+          <span class="brand-name">TECHNICAL WORLD</span>
         </a>
         <button
           class="navbar-toggler"
@@ -45,309 +51,332 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto ms-4">
             <li class="nav-item">
-              <a class="nav-link" href="#inicio">Inicio</a>
+              <a class="nav-link active" href="#inicio" data-seccion="inicio" onclick="irASeccion(event, 'inicio')">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#productos">Productos</a>
+              <a class="nav-link" href="#productos" data-seccion="productos" onclick="irASeccion(event, 'productos')">Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#reparacion">Reparación</a>
+              <a class="nav-link" href="#reparacion" data-seccion="reparacion" onclick="irASeccion(event, 'reparacion')">Reparación</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#contacto">Contacto</a>
+              <a class="nav-link" href="#contacto" data-seccion="contacto" onclick="irASeccion(event, 'contacto')">Contacto</a>
             </li>
           </ul>
-          <button class="cart-btn" onclick="toggleCart()">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Carrito</span>
-            <span class="cart-count" id="cartCount">0</span>
-          </button>
         </div>
       </div>
     </nav>
 
-    <section class="hero">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6">
-            <div class="hero-content">
-              <div class="hero-tag">⚡ Tech Store & Reparación</div>
-              <h1 class="hero-title">
-                <span class="line1">Tu tienda</span><br />
-                <span class="line2">TECHNIC WORLD</span>
-              </h1>
-              <p class="hero-subtitle">
-                Auriculares, cargadores, pendrives, celulares y mucho más.
-                Calidad, rapidez y confianza en cada producto.
-              </p>
-              <div class="hero-btns">
-                <a href="#productos" class="btn-neon"
-                  ><i class="fas fa-th-large"></i> Ver Productos</a
-                >
-                <a href="#reparacion" class="btn-outline-neon"
-                  ><i class="fas fa-tools"></i> Reparaciones</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="hero-visual">
-              <div class="hero-phone">
-                <div class="phone-icon"><i class="fas fa-mobile-alt"></i></div>
-                <div class="phone-services">
-                  <div class="phone-service-item">
-                    <i class="fas fa-headphones"></i> Auriculares
-                  </div>
-                  <div class="phone-service-item">
-                    <i class="fas fa-bolt"></i> Cargadores
-                  </div>
-                  <div class="phone-service-item">
-                    <i class="fas fa-usb"></i> Pendrives
-                  </div>
-                  <div class="phone-service-item">
-                    <i class="fas fa-gamepad"></i> Periféricos
-                  </div>
-                  <div class="phone-service-item">
-                    <i class="fas fa-tools"></i> Reparación
-                  </div>
+    <!-- =========================================================
+         SECCIÓN: INICIO (hero + stats + categorías)
+         ========================================================= -->
+    <div class="page-view active" id="inicio" data-page="inicio">
+
+      <section class="hero">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <div class="hero-content">
+                <div class="hero-tag">⚡ Tech Store & Reparación</div>
+                <h1 class="hero-title">
+                  <span class="line1">Tu tienda</span><br />
+                  <span class="line2">TECHNIC WORLD</span>
+                </h1>
+                <p class="hero-subtitle">
+                  Auriculares, cargadores, pendrives, celulares y mucho más.
+                  Calidad, rapidez y confianza en cada producto.
+                </p>
+                <div class="hero-btns">
+                  <a href="#productos" class="btn-neon" onclick="irASeccion(event, 'productos')"
+                    ><i class="fas fa-th-large"></i> Ver Productos</a
+                  >
+                  <a href="#reparacion" class="btn-outline-neon" onclick="irASeccion(event, 'reparacion')"
+                    ><i class="fas fa-tools"></i> Reparaciones</a
+                  >
                 </div>
               </div>
-              <div class="floating-badge badge-top">✨ Stock disponible</div>
-              <div class="floating-badge badge-bottom">🔧 Reparamos hoy</div>
+            </div>
+            <div class="col-lg-6">
+              <div class="hero-visual">
+                <div class="hero-phone">
+                  <div class="phone-icon"><i class="fas fa-mobile-alt"></i></div>
+                  <div class="phone-services">
+                    <div class="phone-service-item">
+                      <i class="fas fa-headphones"></i> Auriculares
+                    </div>
+                    <div class="phone-service-item">
+                      <i class="fas fa-bolt"></i> Cargadores
+                    </div>
+                    <div class="phone-service-item">
+                      <i class="fas fa-usb"></i> Pendrives
+                    </div>
+                    <div class="phone-service-item">
+                      <i class="fas fa-gamepad"></i> Periféricos
+                    </div>
+                    <div class="phone-service-item">
+                      <i class="fas fa-tools"></i> Reparación
+                    </div>
+                  </div>
+                </div>
+                <div class="floating-badge badge-top">✨ Stock disponible</div>
+                <div class="floating-badge badge-bottom">🔧 Reparamos hoy</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <div class="stats-bar">
-      <div class="container">
-        <div class="row">
-          <div class="col-6 col-md-3">
-            <div class="stat-item">
-              <div class="stat-number">100+</div>
-              <div class="stat-label">Productos</div>
+      <div class="stats-bar">
+        <div class="container">
+          <div class="row">
+            <div class="col-6 col-md-3">
+              <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Productos</div>
+              </div>
             </div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="stat-item">
-              <div class="stat-number">24h</div>
-              <div class="stat-label">Reparaciones</div>
+            <div class="col-6 col-md-3">
+              <div class="stat-item">
+                <div class="stat-number">24h</div>
+                <div class="stat-label">Reparaciones</div>
+              </div>
             </div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="stat-item">
-              <div class="stat-number">★ 5.0</div>
-              <div class="stat-label">Calificación</div>
+            <div class="col-6 col-md-3">
+              <div class="stat-item">
+                <div class="stat-number">★ 5.0</div>
+                <div class="stat-label">Calificación</div>
+              </div>
             </div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="stat-item">
-              <div class="stat-number">∞</div>
-              <div class="stat-label">Garantía confianza</div>
+            <div class="col-6 col-md-3">
+              <div class="stat-item">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Garantía confianza</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Categorías: generadas dinámicamente desde los datos de la hoja 
+      <section class="section-py">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-tag">Navegá por</div>
+            <h2 class="section-title">Categorías <span>destacadas</span></h2>
+          </div>
+          <div class="row g-3 justify-content-center" id="categoriesGrid">
+            JS lo llena después de cargar los productos 
+          </div>
+        </div>-->
+      </section>
+
     </div>
+    <!-- FIN SECCIÓN INICIO -->
 
-    <!-- Categorías: generadas dinámicamente desde los datos de la hoja -->
-    <section class="section-py">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Navegá por</div>
-          <h2 class="section-title">Categorías <span>destacadas</span></h2>
-        </div>
-        <div class="row g-3 justify-content-center" id="categoriesGrid">
-          <!-- JS lo llena después de cargar los productos -->
-        </div>
-      </div>
-    </section>
 
-    <section class="section-py section-dark" id="productos">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Catálogo</div>
-          <h2 class="section-title">Nuestros <span>Productos</span></h2>
-        </div>
-        <!-- Filtros: generados dinámicamente -->
-        <div class="filter-bar" id="filterBar"></div>
-        <div class="products-grid" id="productsGrid">
-          <div class="skeleton-card">
-            <div class="skeleton skeleton-img"></div>
-            <div class="skeleton-body">
-              <div class="skeleton skeleton-line short"></div>
-              <div class="skeleton skeleton-line"></div>
-              <div class="skeleton skeleton-line medium"></div>
-              <div class="skeleton skeleton-line full"></div>
-            </div>
+    <!-- =========================================================
+         SECCIÓN: PRODUCTOS
+         ========================================================= -->
+    <div class="page-view" id="productos" data-page="productos">
+      <section class="section-py section-dark">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-tag">Catálogo</div>
+            <h2 class="section-title">Nuestros <span>Productos</span></h2>
           </div>
-          <div class="skeleton-card">
-            <div class="skeleton skeleton-img"></div>
-            <div class="skeleton-body">
-              <div class="skeleton skeleton-line short"></div>
-              <div class="skeleton skeleton-line"></div>
-              <div class="skeleton skeleton-line medium"></div>
-              <div class="skeleton skeleton-line full"></div>
+          <!-- Filtros: generados dinámicamente -->
+          <div class="filter-bar" id="filterBar"></div>
+          <div class="products-grid" id="productsGrid">
+            <div class="skeleton-card">
+              <div class="skeleton skeleton-img"></div>
+              <div class="skeleton-body">
+                <div class="skeleton skeleton-line short"></div>
+                <div class="skeleton skeleton-line"></div>
+                <div class="skeleton skeleton-line medium"></div>
+                <div class="skeleton skeleton-line full"></div>
+              </div>
             </div>
-          </div>
-          <div class="skeleton-card">
-            <div class="skeleton skeleton-img"></div>
-            <div class="skeleton-body">
-              <div class="skeleton skeleton-line short"></div>
-              <div class="skeleton skeleton-line"></div>
-              <div class="skeleton skeleton-line medium"></div>
-              <div class="skeleton skeleton-line full"></div>
+            <div class="skeleton-card">
+              <div class="skeleton skeleton-img"></div>
+              <div class="skeleton-body">
+                <div class="skeleton skeleton-line short"></div>
+                <div class="skeleton skeleton-line"></div>
+                <div class="skeleton skeleton-line medium"></div>
+                <div class="skeleton skeleton-line full"></div>
+              </div>
             </div>
-          </div>
-          <div class="skeleton-card">
-            <div class="skeleton skeleton-img"></div>
-            <div class="skeleton-body">
-              <div class="skeleton skeleton-line short"></div>
-              <div class="skeleton skeleton-line"></div>
-              <div class="skeleton skeleton-line medium"></div>
-              <div class="skeleton skeleton-line full"></div>
+            <div class="skeleton-card">
+              <div class="skeleton skeleton-img"></div>
+              <div class="skeleton-body">
+                <div class="skeleton skeleton-line short"></div>
+                <div class="skeleton skeleton-line"></div>
+                <div class="skeleton skeleton-line medium"></div>
+                <div class="skeleton skeleton-line full"></div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div id="sheetsNotice" class="sheets-notice" style="display: none">
-          <i class="fas fa-info-circle"></i>
-          <p>
-            Para mostrar productos, configurá el ID de tu Google Sheets en
-            CONFIG.SHEET_ID
-          </p>
-        </div>
-      </div>
-    </section>
-    <!--corte a otra pagina-->
-    <section class="section-py repair-section" id="reparacion">
-      <div class="container">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-6">
-            <div class="section-tag">Servicio técnico</div>
-            <h2 class="section-title mb-3">
-              Reparación de <span>celulares</span>
-            </h2>
-            <p class="repair-desc">
-              Traé tu celular roto y lo devolvemos como nuevo. Trabajamos con
-              todas las marcas con garantía en cada reparación.
-            </p>
-            <ul class="repair-services">
-              <li>
-                <i class="fas fa-check-circle"></i> Cambio de pantalla y vidrio
-              </li>
-              <li><i class="fas fa-check-circle"></i> Cambio de batería</li>
-              <li><i class="fas fa-check-circle"></i> Problemas de carga</li>
-              <li><i class="fas fa-check-circle"></i> Reparación de placa</li>
-              <li><i class="fas fa-check-circle"></i> Recuperación de datos</li>
-              <li><i class="fas fa-check-circle"></i> Todas las marcas</li>
-            </ul>
-            <div class="repair-btns">
-              <a
-                href="https://wa.me/5493454938701?text=Hola%20Technical%20World!%20Quiero%20consultar%20por%20una%20reparaci%C3%B3n%20de%20mi%20celular%20%F0%9F%94%A7"
-                target="_blank"
-                class="btn-wa"
-                ><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a
-              >
-              <a
-                href="https://instagram.com/technical_world099"
-                target="_blank"
-                class="btn-outline-neon"
-                ><i class="fab fa-instagram"></i> Ver en IG</a
-              >
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="repair-card">
-              <div class="repair-icon-big"><i class="fas fa-tools"></i></div>
-              <h3 class="repair-title">¿Por qué elegirnos?</h3>
-              <p class="repair-card-desc">
-                Utilizamos repuestos de calidad y garantizamos cada trabajo.
-                Rapidez y confianza en cada reparación.
-              </p>
-              <div class="row g-3 mt-2">
-                <div class="col-6">
-                  <div class="repair-stat">
-                    <div class="repair-stat-number blue">24h</div>
-                    <div class="repair-stat-label">Entrega rápida</div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="repair-stat">
-                    <div class="repair-stat-number purple">✓</div>
-                    <div class="repair-stat-label">Garantía incluida</div>
-                  </div>
-                </div>
+            <div class="skeleton-card">
+              <div class="skeleton skeleton-img"></div>
+              <div class="skeleton-body">
+                <div class="skeleton skeleton-line short"></div>
+                <div class="skeleton skeleton-line"></div>
+                <div class="skeleton skeleton-line medium"></div>
+                <div class="skeleton skeleton-line full"></div>
               </div>
             </div>
           </div>
+          <div id="sheetsNotice" class="sheets-notice" style="display: none">
+            <i class="fas fa-info-circle"></i>
+            <p>
+              Para mostrar productos, configurá el ID de tu Google Sheets en
+              CONFIG.SHEET_ID
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
-    <!--fin del corte-->
+      </section>
+    </div>
+    <!-- FIN SECCIÓN PRODUCTOS -->
 
-    <footer id="contacto">
-      <div class="container">
-        <div class="row g-4">
-          <div class="col-lg-4">
-            <div class="footer-brand">TECHNICAL WORLD</div>
-            <p class="footer-desc">
-             
-            <div class="social-links">
-              <a
-                href="https://instagram.com/technical_world099"
-                target="_blank"
-                class="social-link"
-                aria-label="Instagram"
-                ><i class="fab fa-instagram"></i
-              ></a>
-              <a
-                href="https://wa.me/5493454938701"
-                target="_blank"
-                class="social-link"
-                aria-label="WhatsApp"
-                ><i class="fab fa-whatsapp"></i
-              ></a>
-            </div>
-          </div>
-          <div class="col-lg-2 col-6">
-            <div class="footer-title">Menú</div>
-            <ul class="footer-links">
-              <li><a href="#inicio">Inicio</a></li>
-              <li><a href="#productos">Productos</a></li>
-              <li><a href="#reparacion">Reparación</a></li>
-              <li><a href="#contacto">Contacto</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-3 col-6">
-            <div class="footer-title">Productos</div>
-            <ul class="footer-links" id="footerCatList">
-              <!-- JS lo llena dinámicamente -->
-            </ul>
-          </div>
-          <div class="col-lg-3">
-            <div class="footer-title">Contacto</div>
-            <ul class="footer-links">
-              <li>
-                <a href="https://wa.me/5493454938701" target="_blank"
-                  ><i class="fab fa-whatsapp"></i> +54 9 345 493 8701</a
+
+    <!-- =========================================================
+         SECCIÓN: REPARACIÓN
+         ========================================================= -->
+    <div class="page-view" id="reparacion" data-page="reparacion">
+      <section class="section-py repair-section">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+              <div class="section-tag">Servicio técnico</div>
+              <h2 class="section-title mb-3">
+                Reparación de <span>celulares</span>
+              </h2>
+              <p class="repair-desc">
+                Traé tu celular roto y lo devolvemos como nuevo. Trabajamos con
+                todas las marcas con garantía en cada reparación.
+              </p>
+              <ul class="repair-services">
+                <li>
+                  <i class="fas fa-check-circle"></i> Cambio de pantalla y vidrio
+                </li>
+                <li><i class="fas fa-check-circle"></i> Cambio de batería</li>
+                <li><i class="fas fa-check-circle"></i> Problemas de carga</li>
+                <li><i class="fas fa-check-circle"></i> Reparación de placa</li>
+                <li><i class="fas fa-check-circle"></i> Recuperación de datos</li>
+                <li><i class="fas fa-check-circle"></i> Todas las marcas</li>
+              </ul>
+              <div class="repair-btns">
+                <a
+                  href="https://wa.me/5493454938701?text=Hola%20Technical%20World!%20Quiero%20consultar%20por%20una%20reparaci%C3%B3n%20de%20mi%20celular%20%F0%9F%94%A7"
+                  target="_blank"
+                  class="btn-wa"
+                  ><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a
                 >
-              </li>
-              <li>
                 <a
                   href="https://instagram.com/technical_world099"
                   target="_blank"
-                  ><i class="fab fa-instagram"></i> @technical_world099</a
+                  class="btn-outline-neon"
+                  ><i class="fab fa-instagram"></i> Ver en IG</a
                 >
-              </li>
-            </ul>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="repair-card">
+                <div class="repair-icon-big"><i class="fas fa-tools"></i></div>
+                <h3 class="repair-title">¿Por qué elegirnos?</h3>
+                <p class="repair-card-desc">
+                  Utilizamos repuestos de calidad y garantizamos cada trabajo.
+                  Rapidez y confianza en cada reparación.
+                </p>
+                <div class="row g-3 mt-2">
+                  <div class="col-6">
+                    <div class="repair-stat">
+                      <div class="repair-stat-number blue">24h</div>
+                      <div class="repair-stat-label">Entrega rápida</div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="repair-stat">
+                      <div class="repair-stat-number purple">✓</div>
+                      <div class="repair-stat-label">Garantía incluida</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="footer-bottom">
-          © 2025 Technic World — Todos los derechos reservados
+      </section>
+    </div>
+    <!-- FIN SECCIÓN REPARACIÓN -->
+
+
+    <!-- =========================================================
+         SECCIÓN: CONTACTO (footer)
+         ========================================================= -->
+    <div class="page-view" id="contacto" data-page="contacto">
+      <footer>
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-lg-4">
+              <div class="footer-brand">TECHNICAL WORLD</div>
+              <p class="footer-desc"></p>
+              <div class="social-links">
+                <a
+                  href="https://instagram.com/technical_world099"
+                  target="_blank"
+                  class="social-link"
+                  aria-label="Instagram"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a
+                  href="https://wa.me/5493454938701"
+                  target="_blank"
+                  class="social-link"
+                  aria-label="WhatsApp"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
+              </div>
+            </div>
+            <div class="col-lg-2 col-6">
+              <div class="footer-title">Menú</div>
+              <ul class="footer-links">
+                <li><a href="#inicio" onclick="irASeccion(event, 'inicio')">Inicio</a></li>
+                <li><a href="#productos" onclick="irASeccion(event, 'productos')">Productos</a></li>
+                <li><a href="#reparacion" onclick="irASeccion(event, 'reparacion')">Reparación</a></li>
+                <li><a href="#contacto" onclick="irASeccion(event, 'contacto')">Contacto</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-6">
+              <div class="footer-title">Productos</div>
+              <ul class="footer-links" id="footerCatList">
+                <!-- JS lo llena dinámicamente -->
+              </ul>
+            </div>
+            <div class="col-lg-3">
+              <div class="footer-title">Contacto</div>
+              <ul class="footer-links">
+                <li>
+                  <a href="https://wa.me/5493454938701" target="_blank"
+                    ><i class="fab fa-whatsapp"></i> +54 9 345 493 8701</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://instagram.com/technical_world099"
+                    target="_blank"
+                    ><i class="fab fa-instagram"></i> @technical_world099</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            © 2025 Technic World — Todos los derechos reservados
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+    <!-- FIN SECCIÓN CONTACTO -->
+
 
     <!-- Panel carrito -->
     <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
@@ -376,7 +405,6 @@
       </div>
     </div>
 
-    <!--corte a otra pagina-->
     <!-- Modal de producto con galería de imágenes -->
     <div
       class="product-modal-overlay"
@@ -394,7 +422,6 @@
         <div class="modal-info" id="modalInfo"></div>
       </div>
     </div>
-    <!--fin del corte-->
 
     <!-- Carrito flotante lateral (derecha, centrado vertical) -->
     <button class="cart-fab" onclick="toggleCart()" aria-label="Abrir carrito">
@@ -437,5 +464,62 @@
     <script src="js/config.js"></script>
     <script src="js/productos.js"></script>
     <script src="js/carrito.js"></script>
+
+    <!-- Navegación entre secciones (mostrar solo una "página" a la vez) -->
+    <script>
+      function irASeccion(e, idSeccion) {
+        if (e) e.preventDefault();
+
+        // Mostrar solo la sección pedida, ocultar el resto
+        document.querySelectorAll('.page-view').forEach((sec) => {
+          sec.classList.toggle('active', sec.id === idSeccion);
+        });
+
+        // Marcar el link activo en el menú
+        document.querySelectorAll('.nav-link').forEach((link) => {
+          link.classList.toggle('active', link.dataset.seccion === idSeccion);
+        });
+
+        // Cerrar el menú colapsado en mobile al navegar
+        const navbarNav = document.getElementById('navbarNav');
+        if (navbarNav.classList.contains('show')) {
+          navbarNav.classList.remove('show');
+        }
+
+        // Llevar el scroll arriba y actualizar la URL (#productos, #reparacion, etc.)
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        history.replaceState(null, '', '#' + idSeccion);
+      }
+
+      // Al cargar la página: si la URL ya trae un hash (ej: technicworld.com/#reparacion)
+      // mostramos esa sección directamente.
+      document.addEventListener('DOMContentLoaded', () => {
+        const hash = window.location.hash.replace('#', '');
+        const secciones = ['inicio', 'productos', 'reparacion', 'contacto'];
+        if (hash && secciones.includes(hash)) {
+          irASeccion(null, hash);
+        }
+      });
+
+      // Las funciones filterCategory() y filterProducts() de productos.js
+      // hacen scroll a #productos: las redirigimos para que también
+      // cambien de "página" antes de hacer scroll.
+      window.addEventListener('load', () => {
+        if (typeof filterCategory === 'function') {
+          const original = filterCategory;
+          window.filterCategory = function (categoria) {
+            irASeccion(null, 'productos');
+            original(categoria);
+          };
+        }
+        if (typeof filterProducts === 'function') {
+          const originalFP = filterProducts;
+          window.filterProducts = function (categoria, btn) {
+            irASeccion(null, 'productos');
+            originalFP(categoria, btn);
+          };
+        }
+      });
+    </script>
   </body>
 </html>

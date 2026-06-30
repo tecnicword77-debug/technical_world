@@ -210,43 +210,6 @@
     filter: invert(1); /* Invierte el color para que se vea blanco */
   }
   
-  /* Botón del carrito en el navbar */
-  .cart-btn {
-    background: transparent;
-    border: 1px solid var(--border-glow);
-    color: var(--neon-blue);
-    border-radius: 10px;
-    padding: 7px 16px;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-  
-  .cart-btn:hover {
-    background: rgba(0, 212, 255, 0.1);
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
-  }
-  
-  /* Contador de items en el carrito (el numerito rojo) */
-  .cart-count {
-    background: var(--neon-pink);
-    color: white;
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 8px rgba(255, 0, 200, 0.6);
-  }
-  
-  
   /* =============================================================================
      4. HERO
      ============================================================================= */
