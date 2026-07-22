@@ -5,7 +5,7 @@
 const CONFIG = {
   SHEET_ID:        '1zey_PgwcnOqDMxhbHI4-2L9w-xulYZGi9w8ZNKkHk4A',
   SHEET_NAME:      'Hoja1',
-  WA_NUMBER:       '5493454938701',
+  WA_NUMBER:       '5493454928734',
   IG_USER:         'technical_world099',
 
   COL_NOMBRE:      'nombre',
@@ -33,6 +33,7 @@ const CONFIG = {
     'Teclados':    '⌨️',
     'Mouses':      '🖱️',
     'Tablets':     '📱',
+    'Herramientas': '🛠️',
     'default':     '📦',
   }
 };
