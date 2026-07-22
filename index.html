@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Technical World</title>
-    <link rel="icon" type="image/jpeg" href="images/logo.jpg" />
+    <link rel="icon" type="image/jpeg" href="images/pm.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,14 +26,22 @@
 
     <!-- Navegación por secciones: solo se ve una "página" a la vez -->
     <style>
-      .page-view { display: none; }
-      .page-view.active { display: block; }
+      .page-view {
+        display: none;
+      }
+      .page-view.active {
+        display: block;
+      }
     </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg" id="navbar-principal">
       <div class="container">
-        <a class="navbar-brand" href="#inicio" onclick="irASeccion(event, 'inicio')">
+        <a
+          class="navbar-brand"
+          href="#inicio"
+          onclick="irASeccion(event, 'inicio')"
+        >
           <div class="brand-logo">TW</div>
           <span class="brand-name">TECHNICAL WORLD</span>
         </a>
@@ -51,16 +59,40 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto ms-4">
             <li class="nav-item">
-              <a class="nav-link active" href="#inicio" data-seccion="inicio" onclick="irASeccion(event, 'inicio')">Inicio</a>
+              <a
+                class="nav-link active"
+                href="#inicio"
+                data-seccion="inicio"
+                onclick="irASeccion(event, 'inicio')"
+                >Inicio</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#productos" data-seccion="productos" onclick="irASeccion(event, 'productos')">Productos</a>
+              <a
+                class="nav-link"
+                href="#productos"
+                data-seccion="productos"
+                onclick="irASeccion(event, 'productos')"
+                >Productos</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#reparacion" data-seccion="reparacion" onclick="irASeccion(event, 'reparacion')">Reparación</a>
+              <a
+                class="nav-link"
+                href="#reparacion"
+                data-seccion="reparacion"
+                onclick="irASeccion(event, 'reparacion')"
+                >Reparación</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#contacto" data-seccion="contacto" onclick="irASeccion(event, 'contacto')">Contacto</a>
+              <a
+                class="nav-link"
+                href="#contacto"
+                data-seccion="contacto"
+                onclick="irASeccion(event, 'contacto')"
+                >Contacto</a
+              >
             </li>
           </ul>
         </div>
@@ -71,7 +103,6 @@
          SECCIÓN: INICIO (hero + stats + categorías)
          ========================================================= -->
     <div class="page-view active" id="inicio" data-page="inicio">
-
       <section class="hero">
         <div class="container">
           <div class="row align-items-center">
@@ -87,10 +118,16 @@
                   Calidad, rapidez y confianza en cada producto.
                 </p>
                 <div class="hero-btns">
-                  <a href="#productos" class="btn-neon" onclick="irASeccion(event, 'productos')"
+                  <a
+                    href="#productos"
+                    class="btn-neon"
+                    onclick="irASeccion(event, 'productos')"
                     ><i class="fas fa-th-large"></i> Ver Productos</a
                   >
-                  <a href="#reparacion" class="btn-outline-neon" onclick="irASeccion(event, 'reparacion')"
+                  <a
+                    href="#reparacion"
+                    class="btn-outline-neon"
+                    onclick="irASeccion(event, 'reparacion')"
                     ><i class="fas fa-tools"></i> Reparaciones</a
                   >
                 </div>
@@ -99,7 +136,9 @@
             <div class="col-lg-6">
               <div class="hero-visual">
                 <div class="hero-phone">
-                  <div class="phone-icon"><i class="fas fa-mobile-alt"></i></div>
+                  <div class="phone-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                  </div>
                   <div class="phone-services">
                     <div class="phone-service-item">
                       <i class="fas fa-headphones"></i> Auriculares
@@ -157,7 +196,7 @@
         </div>
       </div>
 
-      <!-- Categorías: generadas dinámicamente desde los datos de la hoja 
+      <!-- Categorías: generadas dinámicamente desde los datos de la hoja -->
       <section class="section-py">
         <div class="container">
           <div class="section-header">
@@ -165,14 +204,12 @@
             <h2 class="section-title">Categorías <span>destacadas</span></h2>
           </div>
           <div class="row g-3 justify-content-center" id="categoriesGrid">
-            JS lo llena después de cargar los productos 
+            <!-- JS lo llena después de cargar los productos -->
           </div>
-        </div>-->
+        </div>
       </section>
-
     </div>
     <!-- FIN SECCIÓN INICIO -->
-
 
     <!-- =========================================================
          SECCIÓN: PRODUCTOS
@@ -236,7 +273,6 @@
     </div>
     <!-- FIN SECCIÓN PRODUCTOS -->
 
-
     <!-- =========================================================
          SECCIÓN: REPARACIÓN
          ========================================================= -->
@@ -255,12 +291,15 @@
               </p>
               <ul class="repair-services">
                 <li>
-                  <i class="fas fa-check-circle"></i> Cambio de pantalla y vidrio
+                  <i class="fas fa-check-circle"></i> Cambio de pantalla y
+                  vidrio
                 </li>
                 <li><i class="fas fa-check-circle"></i> Cambio de batería</li>
                 <li><i class="fas fa-check-circle"></i> Problemas de carga</li>
                 <li><i class="fas fa-check-circle"></i> Reparación de placa</li>
-                <li><i class="fas fa-check-circle"></i> Recuperación de datos</li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Recuperación de datos
+                </li>
                 <li><i class="fas fa-check-circle"></i> Todas las marcas</li>
               </ul>
               <div class="repair-btns">
@@ -274,8 +313,8 @@
                   href="https://instagram.com/technical_world099"
                   target="_blank"
                   class="btn-outline-neon"
-                  ><i class="fab fa-instagram"></i> Ver en Instagram </a
-                >
+                  ><i class="fab fa-instagram"></i> Ver en Instagram
+                </a>
               </div>
             </div>
             <div class="col-lg-6">
@@ -308,292 +347,219 @@
     </div>
     <!-- FIN SECCIÓN REPARACIÓN -->
 
-
     <!-- =========================================================
          SECCIÓN: CONTACTO (footer)
          ========================================================= -->
-<!-- =========================================================
+    <!-- =========================================================
      SECCIÓN: CONTACTO
      ========================================================= -->
-<div class="page-view full" id="contacto" data-page="contacto">
+    <div class="page-view full" id="contacto" data-page="contacto">
+      <section class="section-py h-100 d-flex align-items-center">
+        <div class="container">
+          <!-- Encabezado -->
+          <div class="section-header text-center mb-5">
+            <div class="section-tag">Estamos para ayudarte</div>
 
-  <section class="section-py h-100 d-flex align-items-center">
+            <h2 class="section-title">
+              Contacta con <span>Technical World</span>
+            </h2>
 
-    <div class="container">
+            <p class="repair-desc mt-3">
+              ¿Necesitas un presupuesto, consultar un producto o conocer el
+              estado de una reparación? Estamos disponibles para responder todas
+              tus consultas de manera rápida y personalizada.
+            </p>
+          </div>
 
-      <!-- Encabezado -->
-      <div class="section-header text-center mb-5">
-        <div class="section-tag">
-          Estamos para ayudarte
-        </div>
+          <!-- Tarjetas -->
+          <div class="row g-4 mb-5">
+            <div class="col-md-4">
+              <div class="repair-card text-center h-100">
+                <div class="repair-icon-big">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
 
-        <h2 class="section-title">
-          Contacta con <span>Technical World</span>
-        </h2>
+                <h4 class="repair-title">WhatsApp</h4>
 
-        <p class="repair-desc mt-3">
-          ¿Necesitas un presupuesto, consultar un producto o conocer el estado
-          de una reparación? Estamos disponibles para responder todas tus
-          consultas de manera rápida y personalizada.
-        </p>
-      </div>
+                <p class="repair-card-desc">
+                  Solicita presupuestos, consulta por reparaciones,
+                  disponibilidad de productos o realiza cualquier consulta.
+                </p>
 
-      <!-- Tarjetas -->
-      <div class="row g-4 mb-5">
-
-        <div class="col-md-4">
-
-          <div class="repair-card text-center h-100">
-
-            <div class="repair-icon-big">
-              <i class="fab fa-whatsapp"></i>
+                <a
+                  href="https://wa.me/5493454938701"
+                  target="_blank"
+                  class="btn-wa mt-3"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                  Escribir ahora
+                </a>
+              </div>
             </div>
 
-            <h4 class="repair-title">
-              WhatsApp
-            </h4>
+            <div class="col-md-4">
+              <div class="repair-card text-center h-100">
+                <div class="repair-icon-big">
+                  <i class="fab fa-instagram"></i>
+                </div>
 
-            <p class="repair-card-desc">
-              Solicita presupuestos, consulta por reparaciones, disponibilidad
-              de productos o realiza cualquier consulta.
+                <h4 class="repair-title">Instagram</h4>
+
+                <p class="repair-card-desc">
+                  Descubre nuevos ingresos, promociones, novedades y trabajos
+                  realizados en nuestro servicio técnico.
+                </p>
+
+                <a
+                  href="https://instagram.com/technical_world099"
+                  target="_blank"
+                  class="btn-outline-neon mt-3"
+                >
+                  <i class="fab fa-instagram"></i>
+                  Seguir
+                </a>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="repair-card text-center h-100">
+                <div class="repair-icon-big">
+                  <i class="fas fa-shipping-fast"></i>
+                </div>
+
+                <h4 class="repair-title">Envíos y consultas</h4>
+
+                <p class="repair-card-desc">
+                  Consulta disponibilidad, medios de pago, envíos, tiempos de
+                  entrega y toda la información que necesites.
+                </p>
+
+                <div class="repair-stat mt-3">
+                  <div class="repair-stat-number blue">24 hs</div>
+
+                  <div class="repair-stat-label">
+                    Tiempo promedio de respuesta
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Información -->
+          <div class="repair-card">
+            <div class="row align-items-center">
+              <div class="col-lg-8">
+                <h3 class="repair-title mb-4">¿Qué puedes consultar?</h3>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <ul class="repair-services">
+                      <li>
+                        <i class="fas fa-check-circle"></i> Presupuestos sin
+                        compromiso
+                      </li>
+
+                      <li>
+                        <i class="fas fa-check-circle"></i> Reparaciones de
+                        celulares
+                      </li>
+
+                      <li>
+                        <i class="fas fa-check-circle"></i> Catálogo de
+                        productos
+                      </li>
+
+                      <li>
+                        <i class="fas fa-check-circle"></i> Disponibilidad de
+                        stock
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="col-md-6">
+                    <ul class="repair-services">
+                      <li>
+                        <i class="fas fa-check-circle"></i> Información sobre
+                        envíos
+                      </li>
+
+                      <li>
+                        <i class="fas fa-check-circle"></i> Medios de pago
+                      </li>
+
+                      <li><i class="fas fa-check-circle"></i> Garantías</li>
+
+                      <li>
+                        <i class="fas fa-check-circle"></i> Accesorios y
+                        recomendaciones
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4">
+                <div class="row g-3">
+                  <div class="col-6">
+                    <div class="repair-stat">
+                      <div class="repair-stat-number blue">100+</div>
+
+                      <div class="repair-stat-label">Productos</div>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="repair-stat">
+                      <div class="repair-stat-number purple">24h</div>
+
+                      <div class="repair-stat-label">Respuesta</div>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="repair-stat">
+                      <div class="repair-stat-number blue">★5</div>
+
+                      <div class="repair-stat-label">Atención</div>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="repair-stat">
+                      <div class="repair-stat-number purple">✔</div>
+
+                      <div class="repair-stat-label">Garantía</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-5">
+            <h4 class="mb-3">¿Listo para comenzar?</h4>
+
+            <p class="repair-desc">
+              En Technical World estaremos encantados de ayudarte a encontrar la
+              mejor solución para tu equipo.
             </p>
 
             <a
-              href="https://wa.me/5493454938701"
+              href="https://wa.me/5493454938701?text=Hola%20Technical%20World!%20Quiero%20hacer%20una%20consulta."
               target="_blank"
-              class="btn-wa mt-3"
+              class="btn-wa"
             >
               <i class="fab fa-whatsapp"></i>
-              Escribir ahora
+              Solicitar presupuesto
             </a>
-
           </div>
-
+          <div class="footer-bottom mt-3 text-center">
+            © 2025 Technical World — Todos los derechos reservados.
+          </div>
         </div>
-
-        <div class="col-md-4">
-
-          <div class="repair-card text-center h-100">
-
-            <div class="repair-icon-big">
-              <i class="fab fa-instagram"></i>
-            </div>
-
-            <h4 class="repair-title">
-              Instagram
-            </h4>
-
-            <p class="repair-card-desc">
-              Descubre nuevos ingresos, promociones, novedades y trabajos
-              realizados en nuestro servicio técnico.
-            </p>
-
-            <a
-              href="https://instagram.com/technical_world099"
-              target="_blank"
-              class="btn-outline-neon mt-3"
-            >
-              <i class="fab fa-instagram"></i>
-              Seguir
-            </a>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-4">
-
-          <div class="repair-card text-center h-100">
-
-            <div class="repair-icon-big">
-              <i class="fas fa-shipping-fast"></i>
-            </div>
-
-            <h4 class="repair-title">
-              Envíos y consultas
-            </h4>
-
-            <p class="repair-card-desc">
-              Consulta disponibilidad, medios de pago, envíos, tiempos de
-              entrega y toda la información que necesites.
-            </p>
-
-            <div class="repair-stat mt-3">
-
-              <div class="repair-stat-number blue">
-                24 hs
-              </div>
-
-              <div class="repair-stat-label">
-                Tiempo promedio de respuesta
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- Información -->
-      <div class="repair-card">
-
-        <div class="row align-items-center">
-
-          <div class="col-lg-8">
-
-            <h3 class="repair-title mb-4">
-              ¿Qué puedes consultar?
-            </h3>
-
-            <div class="row">
-
-              <div class="col-md-6">
-
-                <ul class="repair-services">
-
-                  <li><i class="fas fa-check-circle"></i> Presupuestos sin compromiso</li>
-
-                  <li><i class="fas fa-check-circle"></i> Reparaciones de celulares</li>
-
-                  <li><i class="fas fa-check-circle"></i> Catálogo de productos</li>
-
-                  <li><i class="fas fa-check-circle"></i> Disponibilidad de stock</li>
-
-                </ul>
-
-              </div>
-
-              <div class="col-md-6">
-
-                <ul class="repair-services">
-
-                  <li><i class="fas fa-check-circle"></i> Información sobre envíos</li>
-
-                  <li><i class="fas fa-check-circle"></i> Medios de pago</li>
-
-                  <li><i class="fas fa-check-circle"></i> Garantías</li>
-
-                  <li><i class="fas fa-check-circle"></i> Accesorios y recomendaciones</li>
-
-                </ul>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-4">
-
-            <div class="row g-3">
-
-              <div class="col-6">
-
-                <div class="repair-stat">
-
-                  <div class="repair-stat-number blue">
-                    100+
-                  </div>
-
-                  <div class="repair-stat-label">
-                    Productos
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="col-6">
-
-                <div class="repair-stat">
-
-                  <div class="repair-stat-number purple">
-                    24h
-                  </div>
-
-                  <div class="repair-stat-label">
-                    Respuesta
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="col-6">
-
-                <div class="repair-stat">
-
-                  <div class="repair-stat-number blue">
-                    ★5
-                  </div>
-
-                  <div class="repair-stat-label">
-                    Atención
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="col-6">
-
-                <div class="repair-stat">
-
-                  <div class="repair-stat-number purple">
-                    ✔
-                  </div>
-
-                  <div class="repair-stat-label">
-                    Garantía
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="text-center mt-5">
-
-        <h4 class="mb-3">
-          ¿Listo para comenzar?
-        </h4>
-
-        <p class="repair-desc">
-          En Technical World estaremos encantados de ayudarte a encontrar la
-          mejor solución para tu equipo.
-        </p>
-
-        <a
-          href="https://wa.me/5493454938701?text=Hola%20Technical%20World!%20Quiero%20hacer%20una%20consulta."
-          target="_blank"
-          class="btn-wa"
-        >
-          <i class="fab fa-whatsapp"></i>
-          Solicitar presupuesto
-        </a>
-
-      </div>
-
-      <div class="footer-bottom mt-5 text-center">
-        © 2025 Technical World — Todos los derechos reservados.
-      </div>
-
+      </section>
     </div>
-
-  </section>
-
-</div>
     <!-- FIN SECCIÓN CONTACTO -->
-
 
     <!-- Panel carrito -->
     <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
@@ -688,31 +654,31 @@
         if (e) e.preventDefault();
 
         // Mostrar solo la sección pedida, ocultar el resto
-        document.querySelectorAll('.page-view').forEach((sec) => {
-          sec.classList.toggle('active', sec.id === idSeccion);
+        document.querySelectorAll(".page-view").forEach((sec) => {
+          sec.classList.toggle("active", sec.id === idSeccion);
         });
 
         // Marcar el link activo en el menú
-        document.querySelectorAll('.nav-link').forEach((link) => {
-          link.classList.toggle('active', link.dataset.seccion === idSeccion);
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.classList.toggle("active", link.dataset.seccion === idSeccion);
         });
 
         // Cerrar el menú colapsado en mobile al navegar
-        const navbarNav = document.getElementById('navbarNav');
-        if (navbarNav.classList.contains('show')) {
-          navbarNav.classList.remove('show');
+        const navbarNav = document.getElementById("navbarNav");
+        if (navbarNav.classList.contains("show")) {
+          navbarNav.classList.remove("show");
         }
 
         // Llevar el scroll arriba y actualizar la URL (#productos, #reparacion, etc.)
-        window.scrollTo({ top: 0, behavior: 'instant' });
-        history.replaceState(null, '', '#' + idSeccion);
+        window.scrollTo({ top: 0, behavior: "instant" });
+        history.replaceState(null, "", "#" + idSeccion);
       }
 
       // Al cargar la página: si la URL ya trae un hash (ej: technicworld.com/#reparacion)
       // mostramos esa sección directamente.
-      document.addEventListener('DOMContentLoaded', () => {
-        const hash = window.location.hash.replace('#', '');
-        const secciones = ['inicio', 'productos', 'reparacion', 'contacto'];
+      document.addEventListener("DOMContentLoaded", () => {
+        const hash = window.location.hash.replace("#", "");
+        const secciones = ["inicio", "productos", "reparacion", "contacto"];
         if (hash && secciones.includes(hash)) {
           irASeccion(null, hash);
         }
@@ -721,18 +687,18 @@
       // Las funciones filterCategory() y filterProducts() de productos.js
       // hacen scroll a #productos: las redirigimos para que también
       // cambien de "página" antes de hacer scroll.
-      window.addEventListener('load', () => {
-        if (typeof filterCategory === 'function') {
+      window.addEventListener("load", () => {
+        if (typeof filterCategory === "function") {
           const original = filterCategory;
           window.filterCategory = function (categoria) {
-            irASeccion(null, 'productos');
+            irASeccion(null, "productos");
             original(categoria);
           };
         }
-        if (typeof filterProducts === 'function') {
+        if (typeof filterProducts === "function") {
           const originalFP = filterProducts;
           window.filterProducts = function (categoria, btn) {
-            irASeccion(null, 'productos');
+            irASeccion(null, "productos");
             originalFP(categoria, btn);
           };
         }
