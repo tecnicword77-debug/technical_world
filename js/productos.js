@@ -82,11 +82,6 @@ function buildDynamicUI() {
     categorias.map(cat =>
       `<button class="filter-btn" onclick="filterProducts('${cat}', this)">${cat}</button>`
     ).join('');
-
-  // Footer: lista de categorías
-  document.getElementById('footerCatList').innerHTML = categorias.map(cat =>
-    `<li><a onclick="filterProducts('${cat}')">${cat}</a></li>`
-  ).join('');
 }
 
 // =============================================================================
